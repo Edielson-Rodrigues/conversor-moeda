@@ -9,12 +9,12 @@ public class testeInterface {
     public static void main(String[] args) throws Exception {
      
         // Mensagem
-    //     JOptionPane.showMessageDialog(null,
+    // JOptionPane.showMessageDialog(null,
     // "Os ovos não devem ser verdes.",
     // "Erro inane",
     // JOptionPane.ERROR_MESSAGE);
     
-    //Input
+    // Input
     // String leitura = JOptionPane.showInputDialog("Qual é o seu nome?");
     // System.out.println(leitura);
 
@@ -29,11 +29,11 @@ public class testeInterface {
         // // Exibe uma caixa de diálogo de entrada para solicitar o nome do usuário
         // String nome = JOptionPane.showInputDialog(null, "Digite seu nome:");
 
-        // // Exibe uma caixa de diálogo de confirmação com botões Yes/No
+        // // // Exibe uma caixa de diálogo de confirmação com botões Yes/No
         // int resposta = JOptionPane.showConfirmDialog(null, "Você gostaria de continuar, " + nome + "?",
         //         "Confirmação", JOptionPane.YES_NO_OPTION);
 
-        // // Verifica a resposta do usuário
+        // // // Verifica a resposta do usuário
         // if (resposta == JOptionPane.YES_OPTION) {
         //     // Exibe uma caixa de diálogo de mensagem com um botão OK
         //     JOptionPane.showMessageDialog(null, "Ótimo, " + nome + "! Aproveite o seu dia.",
@@ -45,21 +45,28 @@ public class testeInterface {
         // }
     
         // Cria um array com as opções para o JComboBox
-        // String[] opcoes = { "Opção 1", "Opção 2", "Opção 3" };
+        String[] opcoes = { "Opção 1", "Opção 2", "Opção 3" };
 
-        // // Cria um painel personalizado com componentes
-        // JOptionPane pane = new JOptionPane();
-        // pane.setMessage("Selecione uma opção:");
-        // pane.setMessageType(JOptionPane.QUESTION_MESSAGE);
-        // pane.setOptions(opcoes);
+        // // // Cria um painel personalizado com componentes
+        JOptionPane pane = new JOptionPane();
+        pane.setMessage("Selecione uma opção:");
+        pane.setMessageType(JOptionPane.QUESTION_MESSAGE);
+        pane.setOptions(opcoes);
 
         // // Posiciona os elementos na caixa de diálogo
-        // pane.setInitialValue(opcoes[0]); // Define a opção inicialmente selecionada
+        pane.setInitialValue(opcoes[1]); // Define a opção inicialmente selecionada
 
-        // // Exibe a caixa de diálogo e captura a resposta do usuário
-        // JDialog dialog = pane.createDialog(null, "Posicionamento de Elementos");
-        // dialog.setLocation(300, 200); // Define a posição da caixa de diálogo na tela
-        // dialog.setVisible(true);
+        // Exibe a caixa de diálogo e captura a resposta do usuário
+        JDialog dialog = pane.createDialog(null, "Posicionamento de Elementos");
+        // dialog.setLocation(300, 200); // Define a posição da caixa de diálogo na tela,
+        dialog.setVisible(true);
+     
+        try{
+            Object resposta = pane.getValue(); 
+            System.out.println(resposta.toString());
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
 
         // // Obtém a resposta selecionada pelo usuário
         // Object resposta = pane.getValue();
