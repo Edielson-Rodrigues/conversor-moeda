@@ -1,4 +1,4 @@
 public interface Conversao {
     
-    public String converter(Moeda valor1, Moeda valor2);
+    public String converter(Object origem, Object destino);
 }

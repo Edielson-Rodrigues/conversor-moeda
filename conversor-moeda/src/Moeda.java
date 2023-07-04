@@ -66,10 +66,13 @@ public class Moeda implements Conversao{
     }
 
     @Override
-    public String converter(Moeda moedaOrigem, Moeda moedaDestino) {
-   
+    public String converter(Object origem, Object destino) {
+        
         try{
             // Realizando conversão
+            Moeda moedaOrigem = (Moeda) origem;
+            Moeda moedaDestino = (Moeda) destino;
+            
             double resultadoConversao = Double.parseDouble(consultarCotacao(moedaOrigem, moedaDestino)) * moedaOrigem.getQuantia();
             return String.valueOf(resultadoConversao);
         }catch(Exception ex){
