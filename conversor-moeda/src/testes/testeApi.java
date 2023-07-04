@@ -10,8 +10,8 @@ public class testeApi {
 
     public static void main(String[] args) {
         try {
-            String currency = "USD"; // Moeda de destino
-            String baseCurrency = "BRL"; // Moeda de origem
+            String currency = "BRL"; // Moeda de destino
+            String baseCurrency = "MVR"; // Moeda de origem
 
             // Faz uma requisição GET para a Exchange Rates API
             URL url = new URL("https://api.exchangerate-api.com/v4/latest/" + baseCurrency);
@@ -21,7 +21,7 @@ public class testeApi {
             // Lê a resposta da requisição
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String response = reader.readLine();
-            // System.out.println(response);
+            System.out.println(response);
             reader.close();
           
 
@@ -47,8 +47,8 @@ public class testeApi {
             JSONObject rates = jsonObject.getJSONObject("rates"); // Pegando o objeto Json que foi convertido e que tem a chave rates, esse json está dentro de outro json raiz
             exchangeRate = rates.getDouble(currency); //Procurando o 
             // System.out.println(rates.get("HKD"));
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+           System.out.println("Error " +ex.getMessage());
         }
         return exchangeRate;
     }

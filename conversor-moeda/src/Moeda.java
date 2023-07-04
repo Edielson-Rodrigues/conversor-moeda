@@ -17,9 +17,11 @@ public class Moeda implements Conversao{
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
+    
     public double getQuantia() {
         return quantia;
     }

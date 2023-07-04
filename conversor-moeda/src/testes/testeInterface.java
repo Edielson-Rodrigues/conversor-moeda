@@ -44,29 +44,29 @@ public class testeInterface {
         //             "Mensagem de Confirmação", JOptionPane.INFORMATION_MESSAGE);
         // }
     
-        // Cria um array com as opções para o JComboBox
-        String[] opcoes = { "Opção 1", "Opção 2", "Opção 3" };
+        // // Cria um array com as opções para o JComboBox
+        // String[] opcoes = { "Opção 1", "Opção 2", "Opção 3" };
 
-        // // // Cria um painel personalizado com componentes
-        JOptionPane pane = new JOptionPane();
-        pane.setMessage("Selecione uma opção:");
-        pane.setMessageType(JOptionPane.QUESTION_MESSAGE);
-        pane.setOptions(opcoes);
+        // // // // Cria um painel personalizado com componentes
+        // JOptionPane pane = new JOptionPane();
+        // pane.setMessage("Selecione uma opção:");
+        // pane.setMessageType(JOptionPane.QUESTION_MESSAGE);
+        // pane.setOptions(opcoes);
 
-        // // Posiciona os elementos na caixa de diálogo
-        pane.setInitialValue(opcoes[1]); // Define a opção inicialmente selecionada
+        // // // Posiciona os elementos na caixa de diálogo
+        // pane.setInitialValue(opcoes[1]); // Define a opção inicialmente selecionada
 
-        // Exibe a caixa de diálogo e captura a resposta do usuário
-        JDialog dialog = pane.createDialog(null, "Posicionamento de Elementos");
-        // dialog.setLocation(300, 200); // Define a posição da caixa de diálogo na tela,
-        dialog.setVisible(true);
+        // // Exibe a caixa de diálogo e captura a resposta do usuário
+        // JDialog dialog = pane.createDialog(null, "Posicionamento de Elementos");
+        // // dialog.setLocation(300, 200); // Define a posição da caixa de diálogo na tela,
+        // dialog.setVisible(true);
      
-        try{
-            Object resposta = pane.getValue(); 
-            System.out.println(resposta.toString());
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
+        // try{
+        //     Object resposta = pane.getValue(); 
+        //     System.out.println(resposta.toString());
+        // }catch(Exception ex){
+        //     System.out.println(ex.getMessage());
+        // }
 
         // // Obtém a resposta selecionada pelo usuário
         // Object resposta = pane.getValue();
@@ -80,27 +80,27 @@ public class testeInterface {
         // //     }
         // // }
 
-         // Cria um painel personalizado com os componentes desejados
-        // JPanel panel = new JPanel();
-        // JLabel nameLabel = new JLabel("Nome:");
-        // JTextField nameField = new JTextField(10);
-        // JLabel ageLabel = new JLabel("Idade:");
-        // JTextField ageField = new JTextField(10);
-        // panel.add(nameLabel);
-        // panel.add(nameField);
-        // panel.add(ageLabel);
-        // panel.add(ageField);
+        // Cria um painel personalizado com os componentes desejados
+        JPanel panel = new JPanel();
+        JLabel nameLabel = new JLabel("Nome:");
+        JTextField nameField = new JTextField(10);
+        JLabel ageLabel = new JLabel("Idade:");
+        JTextField ageField = new JTextField(10);
+        panel.add(nameLabel);
+        panel.add(nameField);
+        panel.add(ageLabel);
+        panel.add(ageField);
 
-        // // Exibe a caixa de diálogo com o painel personalizado
-        // int option = JOptionPane.showOptionDialog(null, panel, "Informações Pessoais",
-        //         JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, new Object[]{}, null);
+        // Exibe a caixa de diálogo com o painel personalizado
+        int option = JOptionPane.showOptionDialog(null, panel, "Informações Pessoais",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, new Object[]{}, null);
 
-        // // Verifica se o usuário pressionou o botão OK
-        // if (option == JOptionPane.OK_OPTION) {
-        //     String nome = nameField.getText();
-        //     String idade = ageField.getText();
-        //     JOptionPane.showMessageDialog(null, "Nome: " + nome + "\nIdade: " + idade);
-        // }
+        // Verifica se o usuário pressionou o botão OK
+        if (option == JOptionPane.OK_OPTION) {
+            String nome = nameField.getText();
+            String idade = ageField.getText();
+            JOptionPane.showMessageDialog(null, "Nome: " + nome + "\nIdade: " + idade);
+        }
 
 
 

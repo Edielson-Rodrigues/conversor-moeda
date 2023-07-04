@@ -1,47 +1,61 @@
 package testes;
 
-import javax.print.DocFlavor.STRING;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import java.awt.Component;
 
 public class testeJcomboBox {
 
     public static void main(String[] args) {
         String[] opcoesConversores = {"Conversor de moeda", "Conversor de temperatura"};
 
-        JOptionPane primeiroPane = new JOptionPane();
-        primeiroPane.setMessage(primeiroPane);
+        // Cria um painel personalizado com layout vertical e espaçamento
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); //Define alinhamento vertical
 
-        // Criado seletor e
+        // Adiciona um componente de espaçamento para centralizar verticalmente
+        panel.add(Box.createVerticalGlue());
+
+        // Adiciona a primeira mensagem ao painel e a alinha para o centro
+        JLabel label = new JLabel("Escolha uma opção");
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(label);
+
+        // Adiciona espaçamento vertical entre a mensagem e o seletor de opções
+        panel.add(Box.createVerticalStrut(10));
+
+        // Cria o seletor de opções
         JComboBox<String> comboBox = new JComboBox<>(opcoesConversores);
-        primeiroPane.setMessage(comboBox);
+        comboBox.setAlignmentX(Component.CENTER_ALIGNMENT);
+       
 
-        // Permite exibir a "caixa" como um todo
-        JDialog dialog = primeiroPane.createDialog(null, "Menu");
-        dialog.setVisible(true);
+        // Adiciona o seletor de opções ao painel e o alinha para o centro
+        panel.add(comboBox);
 
-        // Pegando valor do pane
-        // Object respostaPane = primeiroPane.getValue();
-        // System.out.println(respostaPane.toString());
+        // Adiciona um componente de espaçamento para centralizar verticalmente
+        panel.add(Box.createVerticalGlue());
 
-        // Pegando o valor da opção selecionada
-        Object resposta = comboBox.getSelectedItem();
-        
-        System.out.println(resposta.toString());
+        // Exibe o JOptionPane com o painel personalizado e o botão "OK"
+        int escolha = JOptionPane.showOptionDialog(
+                null,
+                panel,
+                "Menu",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                new Object[]{"OK"},
+                "OK");
 
-        // if (resposta != null) {
-        //     if (resposta.toString().equals(opcoesConversores[0])) {
-        //         String[] opcoesTemperatura = {"opcao 1", 
-        //             "opcao 2", "opcao 3"};
-
-        //         JOptionPane segundoPane = new JOptionPane();
-        //         segundoPane.setMessage("Escolha padrões para conversão");
-            
-        //         JDialog segundoDialog = segundoPane.createDialog(null, "Escolha de temperatua");
-        //         segundoDialog.setVisible(true);
-            
-        //     }
-        // }
+        if (escolha == JOptionPane.OK_OPTION) {
+            Object resposta = comboBox.getSelectedItem();
+            if (resposta != null) {
+                String opcaoSelecionada = resposta.toString();
+                System.out.println("Opção selecionada: " + opcaoSelecionada);
+            }
+        }
     }
 }
