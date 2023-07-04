@@ -45,7 +45,7 @@ public class Moeda implements Conversao{
             lendo.close();
 
             // Verificando valores
-            // System.out.println(resposta);
+
 
             return manipulacaoJson(resposta, modeaDestino); 
 

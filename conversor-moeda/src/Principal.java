@@ -15,8 +15,8 @@ public class Principal {
         String[] conversores = {"Conversor de moeda", "Converdor de temeperatura"};
 
         Object[] respostaPrimeiroMenu = montarPainel(conversores, "Escolha um conversor");
-        
-        if(respostaPrimeiroMenu[0].equals(conversores[0]) && respostaPrimeiroMenu[1].hashCode() != -1){
+
+        if(respostaPrimeiroMenu[0].equals(conversores[0]) && respostaPrimeiroMenu[2].hashCode() != -1){
             String[] conversoesMoeda = {"De Reais a Dólar", "De Reais a Euro", "De Reais a Libras Esterlinas",
                                             "De Reais a Peso argentino", "De Reais a Peso Chileno", "De Dólar a Reais",
                                                 "De Euro a Reais", "De Libras Esterlinas a Reais", "De Peso argentino a Reais",
@@ -32,23 +32,38 @@ public class Principal {
             opcoesConvesoes.add(new String[]{"GBP", "BRL"}); opcoesConvesoes.add(new String[]{"ARS", "BRL"});
             opcoesConvesoes.add(new String[]{"CLP", "BRL"});
             
-            System.out.println(opcoesConvesoes.get(4)[0] + " " + opcoesConvesoes.get(4)[1]);
             /*reais = BRL;  dólar = USD; euro = EUR; Libras Esterlinas = GBP; Peso argentino = ARS; peso Chileno = CLP*/
-        
+            
             Object[] escolhaMoedas = montarPainel(conversoesMoeda, "Escolha a moeda para a qual você deseja girar seu dinheiro");
 
-            if(escolhaMoedas[1].hashCode() != -1){
+            if(escolhaMoedas[2].hashCode() != -1){
                 String valor = JOptionPane.showInputDialog("Qual é o valor");
-
+                
                 if(isNumeric(valor)){
-                    //Criando....
-                }
+                    double valorNumerico = Double.parseDouble(valor);
+                    
+                    Moeda moedaOrigem = new Moeda(opcoesConvesoes.get(escolhaMoedas[1].hashCode())[0], valorNumerico);
+                    Moeda moedaDestiono = new Moeda(opcoesConvesoes.get(escolhaMoedas[1].hashCode())[1], valorNumerico);
 
-            
+                    //Chamando função para conversão
+                    double resultadoConversao = Double.parseDouble(moedaOrigem.converter(moedaOrigem, moedaDestiono));
+
+                    JOptionPane.showMessageDialog(null, 
+                                                 opcoesConvesoes.get(escolhaMoedas[1].hashCode())[0] +": "+ valorNumerico +"\n"+ opcoesConvesoes.get(escolhaMoedas[1].hashCode())[1] +": "+resultadoConversao, 
+                                                "Resultado da conversão", 
+                                                JOptionPane.INFORMATION_MESSAGE);
+
+                }else{
+                    JOptionPane.showMessageDialog(null, 
+                                            "O valor dever conter apenas números", 
+                                            "Error", 
+                                            JOptionPane.ERROR_MESSAGE);
+                }
+                
             }
         }
         
-        else if(respostaPrimeiroMenu[0].equals(conversores[1]) && respostaPrimeiroMenu[1].hashCode() != -1){
+        else if(respostaPrimeiroMenu[0].equals(conversores[1]) && respostaPrimeiroMenu[2].hashCode() != -1){
             System.out.println("na minha");
         }
 
@@ -85,10 +100,10 @@ public class Principal {
             new Object[]{"OK"}, 
             "OK");
 
-        String escolha = comboBox.getSelectedItem().toString();
+        String escolhaItem = comboBox.getSelectedItem().toString();
+        Integer escolhaIndex = comboBox.getSelectedIndex();
         
-        return new Object[]{escolha, acao};
-
+        return new Object[]{escolhaItem, escolhaIndex, acao};
     }
 
     public static boolean isNumeric(String valor){
