@@ -1,3 +1,4 @@
+package models;
 public class Temperatura implements Conversao{
     
     private String escala;
