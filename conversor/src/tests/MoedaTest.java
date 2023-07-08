@@ -6,6 +6,6 @@ public class MoedaTest {
     
     @Test
     public void converterTest(){
-        //pessando
+        //pensando
     }
 }
